@@ -54,6 +54,7 @@ public class ProductController {
 
 		System.out.println("/addProduct.do");
 		//Business Logic
+
 		productService.addProduct(product);
 		model.addAttribute("product",product);
 		return "forward:/product/addProduct.jsp";
@@ -116,7 +117,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/listProduct.do")
-	public String listProduct( @ModelAttribute("search") Search search , Model model , HttpServletRequest request) throws Exception{
+	public String listProduct( @ModelAttribute("search") Search search , Model model , HttpServletRequest request ) throws Exception{
 		
 		System.out.println("/listProduct.do");
 		
@@ -136,6 +137,7 @@ public class ProductController {
 		model.addAttribute("resultPage", resultPage);
 		model.addAttribute("search", search);
 		model.addAttribute("menu",request.getParameter("menu"));
+		model.addAttribute("proTranCode","000");
 		return "forward:/product/listProduct.jsp";
 
 	}

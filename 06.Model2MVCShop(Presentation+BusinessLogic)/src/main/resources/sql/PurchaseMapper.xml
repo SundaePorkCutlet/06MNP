@@ -37,8 +37,8 @@
   	<update id="updatePurchase" parameterType ="Purchase">
 		UPDATE	Transaction
 		SET	PAYMENT_OPTION=#{paymentOption:CHAR},RECEIVER_NAME=#{receiverName:VARCHAR},RECEIVER_PHONE=#{receiverPhone:VARCHAR},DEMAILADDR=#{divyAddr:VARCHAR},DLVY_REQUEST=#{divyRequest:VARCHAR},DLVY_DATE=#{divyDate:DATE} 
-		WHERE TRAN_NO=#{tranNo}
-		OR PROD_NO=#{purchaseProd.prodNo}
+		WHERE TRAN_NO=#{tranNo:INTEGER}
+		OR PROD_NO=#{purchaseProd.prodNo:INTEGER}
 		</update>
   	
 	<insert id="addPurchase" parameterType="purchase">
@@ -79,7 +79,7 @@
 	  	SELECT COUNT(*)
 	  	FROM(	SELECT *
 						FROM transaction
-						 -+
+						
 							<where>
 							
 						 			buyer_id = #{value}
