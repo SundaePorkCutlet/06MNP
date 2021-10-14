@@ -13,7 +13,8 @@
 			<result property = "manuDate" column ="manufacture_day" jdbcType = "VARCHAR"/> 
 			<result property = "price" column ="price" jdbcType = "NUMERIC"/> 
 			<result property = "fileName" column ="image_file" jdbcType = "VARCHAR"/> 
-			<result property = "regDate" column ="reg_date" jdbcType = "DATE"/>  
+			<result property = "regDate" column ="reg_date" jdbcType = "DATE"/>
+			<result property = "proTranCode" column = "TSC" jdbcType = "VARCHAR"/>  
 		</resultMap>
 		
 		<insert id="addProduct" parameterType ="product">
@@ -49,6 +50,9 @@
 													<if test="searchCondition == 1 and searchKeyword !='' ">
 										 				pr.prod_name like '%'||#{searchKeyword}||'%'
 													</if>
+													<if test="searchCondition == 2 and searchKeyword !='' ">
+										 				pr.price like '%'||#{searchKeyword}||'%'
+													</if>
 												</where>
 											</if>
 											ORDER BY pr.PROD_NAME) IT
@@ -67,6 +71,9 @@
 								</if>
 								<if test="searchCondition == 1 and searchKeyword !='' ">
 						 		pr.prod_name like '%'||#{searchKeyword}||'%'
+								</if>
+								<if test="searchCondition == 2 and searchKeyword !='' ">
+							pr.price like '%'||#{searchKeyword}||'%'
 								</if>
 							</where>
 						</if> ) countTable						
